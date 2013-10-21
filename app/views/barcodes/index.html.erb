@@ -1,2 +1,13 @@
-<h1>Barcodes#index</h1>
-<p>Find me in app/views/barcodes/index.html.erb</p>
+<h1>Barcodr</h1>
+<p>What a life I live!</p>
+<p>I just sit here on heroku and spin up when people need me..</p>
+<p>I don't have a lot of responsibility, just a CPU intensive one (sorry if I leak memory like crazy too).</p>
+<p>Here are the fancy things I'll help you with:</p>
+<ol>
+  <li>I can whip out a barcode PDF like this; GET /barcodes/{DATA}.pdf</li>
+  <li>I can whip out a barcode JPG like this; GET /barcodes/{DATA}.jpg</li>
+</ol>
+
+<p>I know what you are thinking.. that's not that fancy actually.. well.. soon I'll have more fonts.. would that be fancy?</p>
+<p><%= link_to '800-555-1212', "/barcodes/#{8005551212}.jpg" %></p>
+<p><%= image_tag "http://barcody.herokuapp.com/barcodes/#{8005551212}.jpg" %></p>

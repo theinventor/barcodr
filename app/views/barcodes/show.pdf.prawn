@@ -7,6 +7,6 @@ require 'prawn/layout'
 
   pdf.font font_path do
     size = 36
-    pdf.text code_text, size: size, align: :center
+    pdf.text code_text, size: size
   end
 
