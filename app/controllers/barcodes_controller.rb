@@ -11,10 +11,10 @@ class BarcodesController < ApplicationController
     temp_data = @barcode_data
     respond_to do |format|
       format.html {}
-      format.pdf { prawnto :prawn=>{page_size: [pdf_width || 200,80], margin: [1,5,5,5]} }
+      format.pdf { prawnto :prawn=>{page_size: [pdf_width || 200,30], margin: [1,1,1,1]} }
       format.jpg {
         template = File.read("#{Rails.root}/app/views/barcodes/show.pdf.prawn")
-            pdf = Prawn::Document.new(page_size: [pdf_width || 200,80], margin: [1,5,5,5])
+            pdf = Prawn::Document.new(page_size: [pdf_width || 200,30], margin: [1,1,1,1])
             pdf.instance_eval do
               @barcode_data = temp_data
               eval(template) #this evaluates the template with your variables
