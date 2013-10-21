@@ -26,6 +26,7 @@ class BarcodesController < ApplicationController
         end
         require 'RMagick'
         im = Magick::Image.read(file_name)
+        final = im[0].resize_to_fill(pdf_width, 40)
         im[0].write(file_name + ".jpg"){ self.quality = 95 }
         send_data File.read("#{file_name}.jpg"), :type => 'image/jpeg', :disposition => 'inline'
       }
