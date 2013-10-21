@@ -4,17 +4,18 @@ class BarcodesController < ApplicationController
 
   def show
     base_width = 100
+    base_height = 60
     if params[:id]
-      pdf_width = base_width + (params[:id].length * 14)
+      pdf_width = base_width + (params[:id].length * 10)
     end
     @barcode_data = params[:id]
     temp_data = @barcode_data
     respond_to do |format|
       format.html {}
-      format.pdf { prawnto :prawn=>{page_size: [pdf_width || 200,40], margin: [1,1,1,1]} }
+      format.pdf { prawnto :prawn=>{page_size: [pdf_width, base_height], margin: [1,1,1,1]} }
       format.jpg {
         template = File.read("#{Rails.root}/app/views/barcodes/show.pdf.prawn")
-            pdf = Prawn::Document.new(page_size: [pdf_width || 200,40], margin: [1,1,1,1])
+            pdf = Prawn::Document.new(page_size: [pdf_width, base_height], margin: [1,1,1,1])
             pdf.instance_eval do
               @barcode_data = temp_data
               eval(template) #this evaluates the template with your variables
@@ -25,9 +26,8 @@ class BarcodesController < ApplicationController
           f.write the_file
         end
         require 'RMagick'
-        im = Magick::Image.read(file_name)
-        final = im[0].resize_to_fill(pdf_width, 40)
-        im[0].write(file_name + ".jpg"){ self.quality = 95 }
+        im = Magick::Image.read(file_name).first
+        im.write(file_name + ".jpg"){self.quality = 100}
         send_data File.read("#{file_name}.jpg"), :type => 'image/jpeg', :disposition => 'inline'
       }
     end
