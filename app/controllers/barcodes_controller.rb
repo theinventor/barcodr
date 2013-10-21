@@ -26,7 +26,7 @@ class BarcodesController < ApplicationController
         end
         require 'RMagick'
         im = Magick::Image.read(file_name)
-        im[0].write(file_name + ".jpg")
+        im[0].write(file_name + ".jpg"){ self.quality = 90 }
         send_data File.read("#{file_name}.jpg"), :type => 'image/jpeg', :disposition => 'inline'
       }
     end
