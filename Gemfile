@@ -23,6 +23,8 @@ gem "prawnto"
 # image processing
 gem "rmagick"
 
+gem 'barby'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
