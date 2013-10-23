@@ -14,7 +14,7 @@ class BarcodesController < ApplicationController
       format.pdf { prawnto :prawn=>{page_size: [pdf_width, base_height], margin: [1,1,1,1]} }
       format.png {
         barcode = Barby::Code128B.new(params[:id])
-        send_data barcode.to_png(height: 50), :type => 'image/png', :disposition => 'inline'
+        send_data barcode.to_png(height: 50, margin: 0), :type => 'image/png', :disposition => 'inline'
       }
     end
 
