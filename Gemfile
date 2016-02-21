@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.5.1'
+ruby '2.1.5'
 
 group :development do
   # Use sqlite3 as the database for Active Record
@@ -14,10 +15,8 @@ group :production do
 end
 
 # pdf stuff
-gem "prawn"
-gem "prawn-core"
-gem "prawn-layout"
-gem "prawn-security"
+gem "prawn", '~>2'
+gem 'prawn-table'
 gem "prawnto"
 
 # image processing

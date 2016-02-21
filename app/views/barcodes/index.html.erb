@@ -1,4 +1,4 @@
-<h1>Barcodr</h1>
+<h1>Barcodr (+labels)</h1>
 <p>What a life I live!</p>
 <p>I just sit here on heroku and spin up when people need me..</p>
 <p>I don't have a lot of responsibility, just a CPU intensive one (sorry if I leak memory like crazy too).</p>
@@ -6,8 +6,10 @@
 <ol>
   <li>I can whip out a barcode PDF like this; GET /barcodes/{DATA}.pdf</li>
   <li>I can whip out a barcode JPG like this; GET /barcodes/{DATA}.png</li>
+  <li>I can whip out a label PDF like this; GET /labels/{foo}.pdf?line1=foo&line2=foo&line3=foo&line4=foo</li>
 </ol>
 
 <p>I know what you are thinking.. that's not that fancy actually.. well.. soon I'll have more fonts.. would that be fancy?</p>
 <p><%= link_to '800-555-1212', "/barcodes/#{8005551212}.png" %></p>
+<p><%= link_to 'TestLabel', "/labels/temp.pdf?line1=FOO%20Smith&line2=11511%20NE%20124th&line3=Seattle,%20WA%2098011" %></p>
 <p><%= image_tag "http://barcody.herokuapp.com/barcodes/#{8005551212}.png" %></p>

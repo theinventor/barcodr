@@ -1,4 +1,3 @@
-require 'prawn/layout'
 
 code_text = "*#{@barcode_data}*"
 font_path = "app/fonts/3of9.ttf"
