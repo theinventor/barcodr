@@ -3,8 +3,11 @@ class LabelsController < ApplicationController
   end
 
   def show
-    base_width = 300
-    base_height = 100
+    base_width = params[:width] || 300
+    base_height = params[:height] || 100
+
+    base_width = base_width.to_i
+    base_height = base_height.to_i
     # if params[:id]
     #   pdf_width = base_width + (params[:id].length * 10)
     # end
